@@ -34,6 +34,7 @@ namespace calculator
 
             C.Click += C_Click;
             CE.Click += CE_Click;
+            backspace.Click += Backspace_Click;
 
             percent.Click += Percent_Click;
             equalto.Click += Equalto_Click;
@@ -41,7 +42,6 @@ namespace calculator
             SqrtBtn.Click += SqrtBtn_Click;
             ONEbyX.Click += ONEbyX_Click;
             equalto.MouseDoubleClick += Equalto_MouseDoubleClick;
-            backspace.Click += Backspace_Click;
             twozeroes.Click += Twozeroes_Click;
 
         }
