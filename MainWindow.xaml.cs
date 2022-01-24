@@ -46,6 +46,40 @@ namespace calculator
 
         }
 
+
+        private void C_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            if (Regex.IsMatch(prresult.Content.ToString(), @"[+-/*](\d+)$"))
+            {
+                string s = Regex.Match(prresult.Content.ToString(), @"(\d+)$").ToString();
+                if (s == result.Content.ToString())
+                {
+                    prresult.Content = Regex.Replace(prresult.Content.ToString(), @"(\d+)$", "").ToString();
+
+                }
+            }
+            result.Content = "0";
+
+        }
+        private void CE_Click(object sender, RoutedEventArgs e)
+        {
+            result.Content = "0";
+            prresult.Content = "0";
+        }
+
+
+        private void Backspace_Click(object sender, RoutedEventArgs e)
+        {
+            int stlen = result.Content.ToString().Length;
+            result.Content = result.Content.ToString().Remove(stlen - 1);
+            if (result.Content == "")
+            {
+                result.Content = "0";
+            }
+        }
+
         private void Twozeroes_Click(object sender, RoutedEventArgs e)
         {
             if (result.Content.ToString()!="0")
@@ -54,15 +88,6 @@ namespace calculator
             }
         }
 
-        private void Backspace_Click(object sender, RoutedEventArgs e)
-        {
-            int stlen = result.Content.ToString().Length;
-            result.Content = result.Content.ToString().Remove(stlen-1);
-            if(result.Content=="")
-            {
-                result.Content = "0";
-            }
-        }
 
         private void ONEbyX_Click(object sender, RoutedEventArgs e)
         {
@@ -147,28 +172,6 @@ namespace calculator
             }
         }
 
-
-        private void C_Click(object sender, RoutedEventArgs e)
-        {
-            
-            
-            if (Regex.IsMatch(prresult.Content.ToString(),@"[+-/*](\d+)$"))
-            {
-                string s= Regex.Match(prresult.Content.ToString(), @"(\d+)$").ToString();
-                if (s == result.Content.ToString())
-                {
-                    prresult.Content = Regex.Replace(prresult.Content.ToString(), @"(\d+)$", "").ToString();
-
-                }
-            }
-            result.Content = "0";
-
-        }
-        private void CE_Click(object sender, RoutedEventArgs e)
-        {
-            result.Content = "0";
-            prresult.Content = "0";
-        }
 
         private void dot_Click(object sender, RoutedEventArgs e)
         {
