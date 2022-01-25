@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:calculator"
         mc:Ignorable="d"
-        Title="Calculator" Height="450" Width="300">
-    <Grid Margin="10">
+        BorderBrush="Black" 
+        Title="Calculator" 
+        Height="450" Width="300" 
+        Background="#FF7B7777" 
+        WindowStartupLocation="CenterScreen"
+        >
+
+    <Grid Margin="1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -25,62 +30,49 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.RowSpan="3" Grid.ColumnSpan="4" 
-               Background="blue" />
+               Background="#FF121212" />
         <Label x:Name="prresult" Content="0" 
                HorizontalAlignment="Right" 
                VerticalAlignment="Bottom"
                FontSize="12"
                Grid.RowSpan="2" Grid.ColumnSpan="4"
-               Padding="10" Margin="8" 
-               Background="Blue" Panel.ZIndex="20"/>
+               Padding="10" Margin="8"/>
         <Label x:Name="result" Content="0" 
                HorizontalAlignment="Right" 
                VerticalAlignment="Bottom"
-               FontSize="25"
                Grid.RowSpan="3" Grid.ColumnSpan="4"
-               Padding="10" Margin="10" 
-               Background="Blue" Panel.ZIndex="20"/>
-        
-        <Button x:Name="one" Content="1" Grid.Row="7" Margin="8" Click="Number_Click"/>
-        <Button x:Name="two" Content="2" Grid.Row="7" Grid.Column="1" Margin="8" Click="Number_Click"/>
-        <Button x:Name="three" Content="3" Grid.Row="7" Grid.Column="2" Margin="8" Click="Number_Click"/>
-        <Button x:Name="four" Content="4" Grid.Row="6" Margin="8" Click="Number_Click"/>
-        <Button x:Name="five" Content="5" Grid.Row="6" Grid.Column="1" Margin="8" Click="Number_Click"/>
-        <Button x:Name="six" Content="6" Grid.Row="6" Grid.Column="2" Margin="8" Click="Number_Click"/>
-        <Button x:Name="seven" Content="7" Grid.Row="5" Margin="8" Click="Number_Click"/>
-        <Button x:Name="eight" Content="8" Grid.Row="5" Grid.Column="1" Margin="8" Click="Number_Click"/>
-        <Button x:Name="nine" Content="9" Grid.Row="5" Grid.Column="2" Margin="8" Click="Number_Click"/>
-        <Button x:Name="zero" Content="0" Grid.Row="8" Grid.Column="1" Margin="8" Click="Number_Click"/>
-        <Button x:Name="twozeroes" Content="00" Grid.Row="8" Margin="8" Click="Number_Click"/>
-        <Button x:Name="dot" Content="." Grid.Row="8" Grid.Column="2" Margin="8" Click="dot_Click" />
+               Padding="10" Margin="10"/>
+
+        <Button x:Name="one" Content="1" Style="{StaticResource Nbuttons}" Grid.Row="7" Click="Number_Click"/>
+        <Button x:Name="two" Content="2" Style="{StaticResource Nbuttons}"  Grid.Row="7" Grid.Column="1" Click="Number_Click"/>
+        <Button x:Name="three" Content="3" Style="{StaticResource Nbuttons}" Grid.Row="7" Grid.Column="2" Click="Number_Click"/>
+        <Button x:Name="four" Content="4"  Style="{StaticResource Nbuttons}" Grid.Row="6" Click="Number_Click"/>
+        <Button x:Name="five" Content="5"  Style="{StaticResource Nbuttons}" Grid.Row="6" Grid.Column="1" Click="Number_Click"/>
+        <Button x:Name="six" Content="6"   Style="{StaticResource Nbuttons}" Grid.Row="6" Grid.Column="2" Click="Number_Click"/>
+        <Button x:Name="seven" Content="7" Style="{StaticResource Nbuttons}" Grid.Row="5" Margin="1" Click="Number_Click"/>
+        <Button x:Name="eight" Content="8" Style="{StaticResource Nbuttons}" Grid.Row="5" Grid.Column="1" Click="Number_Click"/>
+        <Button x:Name="nine" Content="9"  Style="{StaticResource Nbuttons}" Grid.Row="5" Grid.Column="2" Click="Number_Click"/>
+        <Button x:Name="zero" Content="0"  Style="{StaticResource Nbuttons}" Grid.Row="8" Grid.Column="1" Click="Number_Click"/>
+        <Button x:Name="twozeroes" Content="00" Style="{StaticResource Nbuttons}" Grid.Row="8" Click="Number_Click"/>
+        <Button x:Name="dot" Content="." Style="{StaticResource Nbuttons}" Grid.Row="8" Grid.Column="2" Click="dot_Click" />
 
 
-        <!--<Button x:Name="backspace"  Grid.Row="3" Grid.Column="3" Margin="8" >
-            <Image Source="images\backspace.png" Height="30" Width="30"/>
-        </Button>-->
-
-        <Button x:Name="backspace"  Grid.Row="3" Grid.Column="3" Margin="8" >
-        </Button>
-        
-        <Button x:Name="CE" Content="CE" Grid.Row="3" Grid.Column="1" Margin="8"/>
-        <Button x:Name="x2" Grid.Row="4" Grid.Column="1" Margin="8">
+        <Button x:Name="backspace" Grid.Row="3" Grid.Column="3"/>
+        <Button x:Name="CE" Content="CE"  Grid.Row="3" Grid.Column="1"/>
+        <Button x:Name="x2" Grid.Row="4"  Grid.Column="1">
             <TextBlock>
                 <Run>x</Run><Run Typography.Variants="Superscript">2</Run>
             </TextBlock>
         </Button>
+        <Button x:Name="C" Content="C"   Grid.Row="3" Grid.Column="2" FontWeight="Normal"/>
+        <Button x:Name="SqrtBtn" Content=""  Grid.Row="4" Grid.Column="2" />
+        <Button x:Name="percent" Content="%" Grid.Row="3"/>
+        <Button x:Name="ONEbyX" Content="1/x" Grid.Row="4" Margin="1"/>
 
-        <Button x:Name="C" Content="C" Grid.Row="3" Grid.Column="2" Margin="8"/>
-        <Button x:Name="SqrtBtn" Content="" Grid.Row="4" 
-                Grid.Column="2" Margin="8"/>
-
-        <Button x:Name="percent" Content="%" Grid.Row="3" Margin="8" RenderTransformOrigin="1,1"/>
-        <Button x:Name="ONEbyX" Content="1/x" Grid.Row="4" Margin="8"/>
-        
-        <Button x:Name="plus" Content="+" Grid.Row="7" Grid.Column="3" Margin="8" Click="Operation_Click"/>
-        <Button x:Name="minus" Content="-" Grid.Row="6" Grid.Column="3" Margin="8"  Click="Operation_Click"/>
-        <Button x:Name="multiply" Content="X" Grid.Row="5" Grid.Column="3" Margin="8"  Click="Operation_Click"/>
-        <Button x:Name="divide" Content="/" Grid.Row="4" Grid.Column="3" Margin="8"  Click="Operation_Click"/>
-
-        <Button x:Name="equalto" Content="=" Grid.Row="8" Grid.Column="3" Margin="8"/>
+        <Button x:Name="plus" Content="+" Grid.Row="7" Grid.Column="3" Click="Operation_Click"/>
+        <Button x:Name="minus" Content="-"  Grid.Row="6" Grid.Column="3" Click="Operation_Click"/>
+        <Button x:Name="multiply" Content="X" Grid.Row="5" Grid.Column="3" Click="Operation_Click"/>
+        <Button x:Name="divide" Content="/"  Grid.Row="4" Grid.Column="3" Click="Operation_Click"/>
+        <Button x:Name="equalto" Content="=" Grid.Row="8" Grid.Column="3"/>
     </Grid>
 </Window>

@@ -47,10 +47,22 @@ namespace calculator
         }
 
 
+        private void Percent_Click(object sender, RoutedEventArgs e)
+        {
+            double tempno;
+            if (double.TryParse(result.Content.ToString(), out tempno))
+            {
+                tempno = tempno / 100;
+                if (LastNo != 0)
+                {
+                    tempno *= LastNo;
+                }
+                result.Content = tempno.ToString();
+            }
+        }
+        
         private void C_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (Regex.IsMatch(prresult.Content.ToString(), @"[+-/*](\d+)$"))
             {
                 string s = Regex.Match(prresult.Content.ToString(), @"(\d+)$").ToString();
@@ -61,12 +73,13 @@ namespace calculator
                 }
             }
             result.Content = "0";
-
         }
         private void CE_Click(object sender, RoutedEventArgs e)
         {
             result.Content = "0";
             prresult.Content = "0";
+            LastNo = 0;
+
         }
 
 
@@ -100,7 +113,7 @@ namespace calculator
                 }
                 else
                 {
-                    result.Content = "Please enter non-zero no...";
+                    MessageBox.Show("Division by 0 is not supported!!!", "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
         }
@@ -160,15 +173,6 @@ namespace calculator
                 }
                 prresult.Content = res.ToString();
                 result.Content = results.ToString();
-            }
-        }
-
-        private void Percent_Click(object sender, RoutedEventArgs e)
-        {
-            if (double.TryParse(result.Content.ToString(), out LastNo))
-            {
-                LastNo = LastNo/100;
-                result.Content =LastNo.ToString();
             }
         }
 
@@ -254,6 +258,11 @@ namespace calculator
         }
         public static double div(double n1, double n2)
         {
+            if (n2==0)
+            {
+                MessageBox.Show("Division by 0 is not supported!!!","Invalid operation",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return 0;
+            }
             return n1 / n2;
         }
         
